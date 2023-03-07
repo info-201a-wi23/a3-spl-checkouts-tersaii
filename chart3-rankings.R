@@ -4,7 +4,7 @@ library(stringr)
 library(ggplot2)
 library(styler)
 
-checkouts <- read_csv("~/a3-data/2022-2023-All-Checkouts-SPL-Data.csv")
+checkouts <- read_csv("D:/INFO201/2022-2023-All-Checkouts-SPL-Data.csv")
 ranking <- checkouts %>%
   group_by(CheckoutYear, MaterialType, Title, Subjects, Creator) %>%
   summarise(checkouts = sum(Checkouts)) %>%

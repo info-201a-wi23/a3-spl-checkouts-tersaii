@@ -3,84 +3,95 @@ title: "A3: SPL Library Checkouts"
 output: html_document
 ---
 
+``` {r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+For my analysis, I wanted to explore a plethora of different data including the three most commonly checkout out material types in 2022, a comparison of checkouts between fiction and nonfiction books across 2022, and a comparison of checkouts between authors Donna Tartt and Kevin Kwan from 2013-2023. Regarding the fiction/nonfiction analysis, I held an interest in these as I wanted to see how the transition of coming out of quarantine had affected what topics people may have been interested.Similarly, I was curious to see what people were actually checking out from libraries commonly as they may not always be books. Finally, I had a personal interest in Kevin Kwan as he wrote Crazy Rich Asians. As a result, I wanted to compare his checkouts to the highest selling author, Donna Tartt across the past decade, especially to see how the release of the film adaptation of Crazy Rich Asians affected this comparison.
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as:
-
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
-
-Feel free to calculate and report values that you find relevant.
+In looking for summary data, I wanted to fixate on Kevin Kwan's checkout history over the past decade. Here, I was able to find that his most popular year for checkouts was in 2019. This could be explained by the fact that the film adaptation for Crazy Rich Asians was released just a year before (Crazy Rich Asians (2018) - Release Info - IMDb, n.d.), most likely causing many to read original book. Surprisingly, 2013, the year of the original release of the book was actually tied with 2023 for the lowest number of checkouts. One could speculate that many decided to buy the book as opposed to checking it out that year due to its recent release and popularity. Some more trivial facts regarding Kevin Kwan I found were that, in the last decade, Kevin Kwan's checkouts averaged about 1930 checkouts a year and his most common medium of reading checked out was in Ebooks, with a total of 28,770 checkouts in the last decade.
 
 ### The Dataset
 
-- Who collected/published the data?  
-- What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
-- How was the data collected or generated?  
-- Why was the data collected?  
-- What, if any, ethical questions do you need to consider when working with this data?  
-- What are possible limitations or problems with this data?   (at least 200 words)
+#### Who collected/published the data?  
+
+This data was collected and published by The Seattle Public Library. It was first created on January 31st, 2017 and was last updated on March 6th 2023.
+
+#### What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
+
+This data consists of 12 columns representing its main categories. These columns consist of:
+- UsageClass (If the item is physical or digital)
+- CheckoutType (What tool was used to check the item out)
+- MaterialType (What kind of item was checked out)
+- CheckoutYear (Year checked out)
+- CheckoutMonth (Month checked out)
+- Checkouts (Number of times item was checked out)
+- Title (Title, and possible subtitle of item)
+- ISBN (Any ISBNS associated with the item)
+- Creator (The author behind the item)
+- Subjects (Any genres, topics, etc. associated with the item)
+- Publisher (Entity that published the item)
+- PublicationYear (Year published)
+
+Taken from the SPL Website (Checkouts by Title | City of Seattle Open Data Portal, 2023).
+
+All of these categories range from 2013 to 2023, depending on the dataset chosen.
+
+#### How was the data collected or generated? 
+
+The each checkout and its metadata was recording through the utilization of the checkout type backlogging said data to be uploaded after the fact.
+
+#### Why was the data collected?
+
+This data was collected and distributed to allow the general public to get a better sense of the trends surrounding content, their mediums, forms of acquirement, etc.
+
+#### What, if any, ethical questions do you need to consider when working with this data? 
+
+One major question I found myself considering as I worked with this data lied in the curiosity as to how spreading data like this might shape the opinions of the masses when they go to checkout more content. Essentially, how might representing trends like popularity in content and the mediums they are conveyed shape the opinions of those viewing it, and could it create a minor mob mentality? Building off of that, how do we communicate this data from an objective standpoint to prevent something like that from happening?
+
+#### What are possible limitations or problems with this data?
+
+I think a key problem I found with this data in my time working with it was in the subject section. The subjects in this section seemed rather plastered, for lack of a better word, all over the place and made it rather difficult especially when conducting my fiction vs non-fiction analysis. Essentially, there was not a clear sense of hierarchy when communicating the subjects associated with an item. A limitation in this set lies in the time-range of the data. It would be very interesting to scale further back past 2013 to see how the interest in content changed as the digital era became more prominent. To do this, we'd need to scale back to the 1990s at the very least.
+
+### First Trends Over Time Chart: Fiction vs. Nonfiction across 2022
+
+I wanted to start with a very general topic that while a bit abstract, interested me. Throughout the course of 2022, the U.S. began to come out of quarantine, and I wanted to see how that may have affected how we consumed content from the SPL during this time. To add a comparision, I decided to compare fiction agaisnt nonfiction as my curiousity lead me to wonder how the exposure to more external factors like the outside world may affect what we end up wanting to consume, content-wise.
 
 
-### First Trends Over Time Chart
+`````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
+`````
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
 
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+In making this chart, I found that both fiction and nonfiction checkouts started at a fairly similar number of checkouts, and while they both followed a similar pattern throughout the course of the year (spikes, drops, etc.) Nonfiction held at a higher number of checkouts for the entirety of the year.
 
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
-``````
 
 ### Second Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+My second chart relates again to my interest in Kevin Kwan. Given that his hit book *Crazy Rich Asians* came out in 2013, I decided to research the top-selling books in 2013 to find a competitor and found that, *Inferno* by Dan Brown was one of the bestselling books in 2013 (Reporter, 2017). In stacking Kwan's number of checkouts against a competitor, I was curious to see how the fame of the film adaption of *Crazy Rich Asians* would compare against a popular author who mainly stuck to the medium of a book. 
 
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
 
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+``````{r, echo = FALSE, warning = FALSE, code = readLines("chart2_example.R")}
 ``````
+
+In this chart, you'll see that while Brown has more checkouts than Kwan from 2013 to 2017, Kwan's checkouts significantly increase and remain above Brown's after the film adaption of *Crazy Rich Asians* releases. It is also interesting to note that both authors end up at a very similar number of checkouts as of 2023.
 
 ### Your Choice
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
+For my last chart, I wanted to get a sense of the most popular item types being checked out from the Seattle Public Library were in 2022. In doing so, I found that the top 3 item types were: Mixed (Items like headphones, CD, etc.), Ebooks, and Audiobooks. From here, I decided to compare how much of each type were being checked out and compare them against each other in a pie chart.
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart3-rankings.R")}
+``````{r, echo = FALSE, warning = FALSE, code = readLines("chart3-rankings.R")}
 ``````
 
+Here I found that the Mixed category was the most prevalent type being checked out. However, if you were to combine Ebooks and Audiobooks into the same category of books, then it would gain prevalence.
 
+### References
+
+Crazy Rich Asians (2018) - Release info - IMDb. (n.d.). IMDb. https://www.imdb.com/title/tt3104988/releaseinfo/
+
+Checkouts by Title | City of Seattle Open Data portal. (2023, March 6). https://data.seattle.gov/Community/Checkouts-by-Title/tmmm-ytt6
+
+Reporter, G. S. (2017, September 20). Bestselling books of 2013: the chart. The Guardian. https://www.theguardian.com/books/2013/dec/27/bestselling-print-books-2013

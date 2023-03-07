@@ -3,7 +3,7 @@ library(readr)
 library(stringr)
 library(ggplot2)
 
-checkouts <- read_csv("~/a3-data/2022-2023-All-Checkouts-SPL-Data.csv")
+checkouts <- read_csv("D:/INFO201/2022-2023-All-Checkouts-SPL-Data.csv")
 nfdata <- checkouts %>% filter(Subjects %in% c("Nonfiction", "Fiction"))
 comparison <- nfdata %>%
   group_by(CheckoutMonth, Subjects) %>%
@@ -20,4 +20,3 @@ ggplot(comparison) +
   ) +
   scale_x_continuous(breaks = seq(1, 12, 1)) +
   scale_y_continuous(breaks = seq(50, 450, 50))
- getwd()

@@ -2,10 +2,10 @@ library(dplyr)
 library(readr)
 library(stringr)
 
-five_checkouts <- read_csv("~/a3-data/2013-2023-5-Checkouts-SPL.csv")
+five_checkouts <- read_csv("D:/INFO201/2013-2023-5-Checkouts-SPL.csv")
 
 #tracking kevin kwan, author of Crazy Rich Asians, sales over the years.
-kwan <- checkouts %>% filter(Creator == "Kevin Kwan")
+kwan <- five_checkouts %>% filter(Creator == "Kevin Kwan")
 kwan_trends <- kwan %>% group_by(CheckoutYear, MaterialType) %>% summarise(checkouts = sum(Checkouts))
 
 #year with the most amount of checkouts (2019)
